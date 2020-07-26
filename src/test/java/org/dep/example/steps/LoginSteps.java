@@ -38,6 +38,6 @@ public class LoginSteps {
 
         System.out.println("Home Page title verification");
         String actualTitle = PageObjectManager.getHomePage().verifyHomePageTitle();
-        Assert.assertEquals("Kaala1", actualTitle);
+        Assert.assertEquals("Kaala", actualTitle);
     }
 }
