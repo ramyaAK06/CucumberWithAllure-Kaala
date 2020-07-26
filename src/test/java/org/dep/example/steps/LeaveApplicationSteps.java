@@ -18,11 +18,19 @@ public class LeaveApplicationSteps{
         PageObjectManager.getLeavesPage().clickOnNewLeaveButton();
     }
 
-    @Then("User should select the type of leave and number of days")
+    @Then("User should select the type of leave, description and number of days")
     public void user_should_select_the_type_of_leave_and_number_of_days() {
         System.out.println("User selects Type of leave and Number of days for leave");
-        PageObjectManager.getLeavesPage().selectLeaveType(LeaveType.Sick);
-        PageObjectManager.getLeavesPage().selectNumberOfLeaves(NumberOfDays.TwoDays);
+        PageObjectManager.getLeavesPage().selectLeaveType(LeaveType.Annual);
+        PageObjectManager.getLeavesPage().addLeaveDescription("visiting to hometown");
+        PageObjectManager.getLeavesPage().selectNumberOfLeaves(NumberOfDays.ThreeDays);
+    }
+
+    @Then("User should select leave from and to dates {int} to {int}")
+    public void user_should_select_leave_from_and_to_dates(int startDate, int endDate) {
+        System.out.println("User selects leave from and to dates by clicking on Calendar");
+        PageObjectManager.getLeavesPage().selectFromDate(startDate);
+        PageObjectManager.getLeavesPage().selectToDate(endDate);
     }
 
     @Then("User should apply for leave")

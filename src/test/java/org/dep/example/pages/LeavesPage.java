@@ -31,10 +31,10 @@ public class LeavesPage extends AbstractPage{
     @FindBy(id="away_description")
     private WebElement away_description;
 
-    @FindBy(id="away_from_date")
+    @FindBy(xpath="//td[contains(text(),'13')]")
     private WebElement away_from_date;
 
-    @FindBy(id="away_to_date")
+    @FindBy(xpath="//td[contains(text(),'27')]")
     private WebElement away_to_date;
 
     @FindBy(className="datepicker-switch")
@@ -57,9 +57,10 @@ public class LeavesPage extends AbstractPage{
 
     public LeavesPage selectNumberOfLeaves(NumberOfDays days){
         for(int i=0;i<numberOfDays.size();i++){
-            if(numberOfDays.get(i).getText().equals(days)){
+            if(numberOfDays.get(i).getText().equals(days)) {
                 numberOfDays.get(i).click();
             }
+            break;
         }
         return this;
     }
@@ -73,8 +74,14 @@ public class LeavesPage extends AbstractPage{
         return this;
     }
 
-    public LeavesPage selectFromAndToLeaveDates(/*Date fromDate, Date toDate*/){
-        String expectedDate = "25/07/2020";
+    public LeavesPage selectFromDate(int date){
+        driver.findElement(By.name("away[from_date]")).click();
+        driver.findElement(By.xpath("//td[contains(text(),"+date+")]")).click();
        return this;
+    }
+    public LeavesPage selectToDate(int date){
+        driver.findElement(By.name("away[to_date]")).click();
+        driver.findElement(By.xpath("//td[contains(text(),"+date+")]")).click();
+        return this;
     }
 }

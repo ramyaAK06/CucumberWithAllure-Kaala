@@ -15,5 +15,6 @@ Feature: Application for Leave functionality.
     Then User should navigate to HomePage
     Then User should navigate to Leaves page
     Then User should click on New leaveButton
-    Then User should select the type of leave and number of days
+    Then User should select the type of leave, description and number of days
+    Then User should select leave from and to dates 27 to 30
     Then User should apply for leave
